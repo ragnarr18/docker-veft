@@ -1,0 +1,4 @@
+includes all the commands used to create the images, run the
+containers, etc… (basically everything that involves the Docker setup of the microservice
+structure)
+
