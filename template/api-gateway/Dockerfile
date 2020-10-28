@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2
 
 LABEL maintainer="Andri Már Valsson or Ragnar Geir Ragnarsson"
 
