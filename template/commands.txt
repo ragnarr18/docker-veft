@@ -11,3 +11,12 @@ docker run -d --name api-gateway --network flamingo-network -p 7000:5000 api-gat
 //customer-service
 docker build -t customer-service ./customer-service
 docker run -d --name customer-service --network flamingo-network -p 80:6000 customer-service
+
+//customer-db
+
+//order-service
+docker build -t order-service ./order-service
+docker run -d --name order-service --network flamingo-network order-service
+
+//order-service mongodb
+docker run -d --name order-db --network flamingo-network mongo
