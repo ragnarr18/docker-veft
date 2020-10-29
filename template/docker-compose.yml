@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+
+  api-gateway:
+    build:
+        dockerfile: Dockerfile
+        context: './api-gateway'
+    ports:
+        - "7000:5000"
+
+  customer-service:
+    build:
+        dockerfile: Dockerfile
+        context: './customer-service'
+
+  email-service:
+    build:
+        dockerfile: Dockerfile
+        contect: './email-service'
+
+  log-service:
+    build:
+        dockerfile: Dockerfile
+        context: './log-service'
+
+  order-service:
+    build:
+        dockerfile: Dockerfile
+        context: './order-service'
+
+#   web:
+#     build: .
+#     ports:
+#       - "5000:5000"
+#     volumes:
+#       - .:/code
+#       - logvolume01:/var/log
+#     links:
+#       - redis
+#   redis:
+#     image: redis
+# volumes:
+#   logvolume01: {}
