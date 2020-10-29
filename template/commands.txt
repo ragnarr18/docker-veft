@@ -11,3 +11,7 @@ docker run -d --name api-gateway --network flamingo-network -p 7000:5000 api-gat
 //customer-service
 docker build -t customer-service ./customer-service
 docker run -d --name customer-service --network flamingo-network -p 80:6000 customer-service
+
+//log-service run from log-service
+docker build -t log-service .                                                           //run from log-service
+docker run -d --name log-service --network flamingo-network -p 80:6000 log-service      //run from template
