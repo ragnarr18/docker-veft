@@ -26,6 +26,8 @@ docker build -t log-service .
 docker run -d --name log-service --network flamingo-network -p 80:6000 log-service  
 
 //email-service
+docker build -t email-service .                                                           
+docker run -d --name email-service --network flamingo-network -p 80:6000 email-service  
 
 //rabbitmq
 docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3
