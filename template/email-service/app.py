@@ -46,9 +46,9 @@ setup_queue(exchange_name, customer_email_queue_name, create_customer_routing_ke
 
 def send_simple_message(to, subject, body):
     return requests.post(
-        "<insert-your-mailgun-settings>",
-        auth=("api", "<insert-your-mailgun-api-key>"),
-        data={"from": "Mailgun Sandbox <mailgun@<insert-your-mailgun-sandbox>>",
+        "https://api.mailgun.net/v3/sandbox9402738f2d4340c08993ef206af40a20.mailgun.org/messages",
+        auth=("api", "key-5e34b3ec4d99e874df983417828abd89>"),
+        data={"from": "Mailgun Sandbox <postmaster@sandbox9402738f2d4340c08993ef206af40a20.mailgun.org>",
               "to": to,
               "subject": subject,
               "html": body})
