@@ -28,4 +28,4 @@ docker run -d --name log-service --network flamingo-network -p 80:6000 log-servi
 //email-service
 
 //rabbitmq
-docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3
+docker run -d --name message-broker --hostname message-broker --network flamingo-network -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=pass rabbitmq:3
