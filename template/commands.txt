@@ -31,3 +31,6 @@ docker run -d --name email-service --network flamingo-network email-service
 
 //rabbitmq
 docker run -d --name message-broker --hostname message-broker --network flamingo-network -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=pass rabbitmq:3
+
+//postgres
+docker run -d --name customer-db --network flamingo-network -e POSTGRES_DB=customer_db -e POSTGRES_PASSWORD=Abc.12345 postgres
