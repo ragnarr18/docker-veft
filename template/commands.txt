@@ -1,0 +1,13 @@
+includes all the commands used to create the images, run the
+containers, etc… (basically everything that involves the Docker setup of the microservice
+structure)
+
+docker network create --driver bridge flamingo-network
+
+//api-gateway
+docker build -t api-gateway ./api-gateway
+docker run -d --name api-gateway --network flamingo-network -p 7000:5000 api-gateway
+
+//customer-service
+docker build -t customer-service ./customer-service
+docker run -d --name customer-service --network flamingo-network -p 80:6000 customer-service
