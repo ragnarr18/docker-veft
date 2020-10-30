@@ -4,3 +4,5 @@
 *ionide*
 *package-lock*
 *node_modules*
+.fake
+.ionide

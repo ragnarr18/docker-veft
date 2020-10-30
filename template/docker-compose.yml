@@ -2,32 +2,80 @@ version: "3.8"
 services:
 
   api-gateway:
-    build:
+      build:
         dockerfile: Dockerfile
         context: './api-gateway'
-    ports:
+      container_name: api-gateway
+      networks: 
+          - "flamingo-network"
+      ports:
         - "7000:5000"
 
   customer-service:
-    build:
+      build:
         dockerfile: Dockerfile
         context: './customer-service'
+      container_name: customer-service
+      networks:  
+        - "flamingo-network"
+
+  customer-db:
+    image: postgres
+    container_name: customer-db
+    volumes:  
+      - ./customer-db/db-scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks: 
+      - "flamingo-network"
+    environment:
+      POSTGRES_DB: "customer_db"
+      POSTGRES_PASSWORD: "Abc.12345"
 
   email-service:
-    build:
+      build:
         dockerfile: Dockerfile
-        contect: './email-service'
+        context: './email-service'
+      container_name: email-service
+      networks: 
+          - "flamingo-network"
 
   log-service:
-    build:
+      build:
         dockerfile: Dockerfile
         context: './log-service'
+      container_name: log-service
+      networks: 
+          - "flamingo-network"
 
   order-service:
-    build:
+      build:
         dockerfile: Dockerfile
         context: './order-service'
+      container_name: order-service
+      networks: 
+        - "flamingo-network"
+  
+  order-db:
+      image: mongo
+      container_name: order-db
+      networks:
+        - flamingo-network
 
+  message-broker:
+      image: rabbitmq:3
+      container_name: message-broker
+      hostname: message-broker
+      environment: 
+        RABBITMQ_DEFAULT_USER: "user"
+        RABBITMQ_DEFAULT_PASS: "pass"
+        RABBITMQ_DEFAULT_VHOST: "/"
+      networks: 
+        - flamingo-network
+      
+networks: 
+  flamingo-network:
+        driver: bridge
+
+  
 #   web:
 #     build: .
 #     ports:
